@@ -19,23 +19,24 @@ function Postcode() {
   // handle change event of the district dropdown
   const handleDistrictChange = (obj) => {
     setDistrict(obj);
-    console.log(district)
+    console.log(obj)
   };
 
 
   // Checkboxes
-  const [isChecked, setIsChecked] = useState(false);
-  const [crime, setCrime] = useState("");
-  const [crimeList, setCrimeList] = useState([]);
+  const crimeList = ["Assault", "Anti-social", "Burglary"]
+  const [checked, setChecked] = useState([]);
 
   // handle change event of the checkboxes
-  const handleOnChange = e => {
-    setIsChecked(!isChecked);
-    setCrime(e.target.value)
-    if(isChecked) {
-      setCrimeList(prevArray => [...prevArray, crime]);
+  const handleOnClick = (e) => {
+    var updatedList = [...checked];
+    if(e.target.checked) {
+      updatedList = [...checked, e.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(e.target.value), 1)
     }
-    console.log(crime);
+    setChecked(updatedList);
+    console.log(updatedList)
   }
 
   //handle submit button
@@ -74,41 +75,19 @@ function Postcode() {
         </div>
       </div>
       
-      <div className="checkbox">
-        <h4 className="center">Select:</h4>
-        <div className="checkbox__item">
-          <input
-            type="checkbox"
-            id="assult"
-            value="assult"
-            onChange={handleOnChange}
-          />
-          <label>Assult</label>
-        </div>
-        <div className="checkbox__item">
-          <input
-            type="checkbox"
-            id="anti-social"
-            value="anti-social"
-            onChange={handleOnChange}
-          />
-          <label>Anti-social</label>
-        </div>
-        <div className="checkbox__item">
-          <input
-            type="checkbox"
-            id="burglary"
-            value="burglary"
-            onChange={handleOnChange}
-          />
-          <label>Burglary</label>
-        </div>
-        <div className="checkbox__button">
-          <input 
-            type="submit" 
-            value="SUBMIT" 
-            onClick={handleOnSubmit}
-          />
+      <div className="crimeList">
+        <h4 className="crimeList__title">Select:</h4>
+        <div className="crimeList__container">
+          {crimeList.map((item, index) => (
+            <div key={index}>
+              <input 
+                value={item} 
+                type="checkbox"
+                onClick={handleOnClick} 
+              />
+              <span className="crimeList__item">{item}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
