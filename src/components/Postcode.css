@@ -1,0 +1,44 @@
+.search__container {
+  align-items: center;
+  max-width: 1120px;
+  margin: 40px auto;
+}
+
+.search__item {
+  align-items: center;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.crimeList {
+  width: 400px;
+  max-width: 1120px;
+  margin: 12px auto;
+  font-size: 1.17em;
+  display: block;
+  font-family: sans-serif;
+}
+
+.crimeList__container {
+  margin: 15px auto;
+}
+
+.crimeList__item {
+  font-size: 1.17em;
+  font-family: sans-serif;
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
